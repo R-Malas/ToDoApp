@@ -1,0 +1,24 @@
+{
+  "@@locale": "ar",
+  "homeTitle": "قائمة المهام",
+  "remainingTasks": "{total, plural, zero{ليس لديك أي مهمة} one{ {remaining, plural, zero{لم يتبقى أي مهمة} one{باقي مهمة واحدة} two{} few{} many{} other{}} من أصل مهمة واحدة} two{ {remaining, plural, zero{لم يتبقى أي مهمة} one{باقي مهمة واحدة} two{باقي مهمتان} few{} many{} other{}} من أصل مهمتان} few{ {remaining, plural, zero{لم يتبقى أي مهمة} one{باقي مهمة واحدة} two{باقي مهمتان} few{باقي {remaining} مهام} many{} other{}} من أصل {total} مهام} many{ {remaining, plural, zero{لم يتبقى أي مهمة} one{باقي مهمة واحدة} two{باقي مهمتان} few{باقي {remaining} مهام} many{باقي {remaining} مهمة} other{باقي {remaining} مهمة}} من أصل {total} مهمة} other{ {remaining, plural, zero{لم يتبقى أي مهمة} one{باقي مهمة واحدة} two{باقي مهمتان} few{باقي {remaining} مهام} many{باقي {remaining} مهمة} other{باقي {remaining} مهمة}} من أصل {total} مهمة}}",
+  "@remainingTasks": {
+    "placeholder": {
+      "placeholders": {
+        "remaining": {
+          "type": "int"
+        },
+        "total": {
+          "type": "int"
+        }
+      }
+    }
+  },
+  "goBack": "رجوع",
+  "newTaskTitle": "أضف مهمة جديدة",
+  "taskTextLbl": "المهمة",
+  "taskTextHint": "مهمة جديدة",
+  "submitBtn": "إضافة",
+  "requiredFieldMsg": "هذا الحقل مطلوب",
+  "validTextErrMsg": "يرجى إدخال تص المهمة"
+}
