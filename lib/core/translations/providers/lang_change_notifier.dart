@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'package:to_do_list/translations/generated/l10n.dart';
+import 'package:to_do_list/core/translations/generated/l10n.dart';
 
 class LanguageChangeNotifier extends ChangeNotifier {
   late SharedPreferences _pref;
@@ -20,16 +20,6 @@ class LanguageChangeNotifier extends ChangeNotifier {
     }
     notifyListeners();
   }
-
-  // initSharedPref() async {
-  //   _pref = await SharedPreferences.getInstance();
-  //   var storedLang = _pref.getString('selectedLang');
-  //   debugPrint(storedLang);
-  //   if (storedLang != null) {
-  //     _currentLang = Locale(storedLang);
-  //   }
-  //   notifyListeners();
-  // }
 
   void changeLang(Locale selectedLang) {
     _currentLang = selectedLang;

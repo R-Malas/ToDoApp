@@ -11,17 +11,25 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
+  flutter_localizations:
+    sdk: flutter
+  flutter_web_plugins:
+    sdk: flutter
 
   cupertino_icons: ^1.0.2
   provider: ^6.0.3
   intl: ^0.17.0
-  flutter_localizations:
-    sdk: flutter
   drift: ^1.7.0
   sqlite3_flutter_libs: ^0.5.8
   path_provider: ^2.0.11
   path: ^1.8.0
   shared_preferences: ^2.0.15
+  oauth2: ^2.0.0
+  flutter_secure_storage: ^5.0.2
+  http: ^0.13.4
+  url_launcher: ^6.1.4
+  uni_links: ^0.5.1
+  flash: ^2.0.3+2
 
 dev_dependencies:
   flutter_test:
@@ -56,8 +64,8 @@ flutter:
   # see https://flutter.dev/custom-fonts/#from-packages
 
 flutter_intl:
-  enabled: true
+  enabled: ture
   main_locale: en_US
   class_name: Translations
-  arb_dir: lib/translations/l10n
-  output_dir: lib/translations/generated
+  arb_dir: lib/core/translations/l10n
+  output_dir: lib/core/translations/generated

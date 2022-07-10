@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:drift/drift.dart' as drift;
 import 'package:to_do_list/core/db/db_main.dart';
-import 'package:to_do_list/translations/generated/l10n.dart';
+import 'package:to_do_list/core/translations/generated/l10n.dart';
 
 class AddToDoScreen extends StatefulWidget {
   const AddToDoScreen({Key? key}) : super(key: key);

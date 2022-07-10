@@ -2,10 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:drift/drift.dart' as drift;
 import 'package:to_do_list/core/db/db_main.dart';
-import 'package:to_do_list/core/providers/db_change_notifier.dart';
-import 'package:to_do_list/route_management.dart';
+import 'package:to_do_list/core/db/providers/db_change_notifier.dart';
+import 'package:to_do_list/core/routing/app_routes.dart';
+import 'package:to_do_list/core/translations/generated/l10n.dart';
 import 'package:to_do_list/screens/home/widgets/language_selector.dart';
-import 'package:to_do_list/translations/generated/l10n.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({Key? key}) : super(key: key);
@@ -110,8 +110,7 @@ class _HomeScreenState extends State<HomeScreen> {
       ),
       floatingActionButton: FloatingActionButton(
           child: const Icon(Icons.add),
-          onPressed: () =>
-              Navigator.of(context).pushNamed(RouteManagement.addToDo)),
+          onPressed: () => Navigator.of(context).pushNamed(AppRoutes.addTask)),
     );
   }
 }

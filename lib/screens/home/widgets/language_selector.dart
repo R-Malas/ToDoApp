@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:to_do_list/core/providers/lang_change_notifier.dart';
-import 'package:to_do_list/translations/generated/l10n.dart';
+import 'package:to_do_list/core/translations/generated/l10n.dart';
+import 'package:to_do_list/core/translations/providers/lang_change_notifier.dart';
+
 
 class LanguageSelector extends StatelessWidget {
   const LanguageSelector({Key? key}) : super(key: key);

@@ -1,18 +1,25 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'package:to_do_list/core/db/db_main.dart';
-import 'package:to_do_list/core/providers/db_change_notifier.dart';
-import 'package:to_do_list/core/providers/lang_change_notifier.dart';
-import 'package:to_do_list/route_management.dart';
-import 'package:to_do_list/screens/home/home_screen.dart';
-import 'package:to_do_list/translations/generated/l10n.dart';
 
-void main() {
+import 'package:to_do_list/core/auth/services/auth_service.dart';
+import 'package:to_do_list/core/db/db_main.dart';
+import 'package:to_do_list/core/db/providers/db_change_notifier.dart';
+import 'package:to_do_list/core/translations/providers/lang_change_notifier.dart';
+import 'package:to_do_list/main_app_widget.dart';
+
+Future<void> main() async {
+  // Wait until shared pref is initialized before running the app.
+  WidgetsFlutterBinding.ensureInitialized();
+
+  // init shared pref
+  SharedPreferences _sharedPref = await SharedPreferences.getInstance();
+
   runApp(MultiProvider(
     providers: [
       Provider.value(value: MyDatabase()),
+      Provider.value(value: _sharedPref),
+      Provider.value(value: AuthServiceV2(_sharedPref)),
       ChangeNotifierProxyProvider<MyDatabase, DbChangeNotifier>(
           create: (context) => DbChangeNotifier(),
           update: (context, db, notifier) {
@@ -20,13 +27,7 @@ void main() {
               ..initTodoDb(db)
               ..getTaskStream();
           }),
-      FutureProvider<SharedPreferences?>(
-          create: (_) async => await SharedPreferences.getInstance(),
-          updateShouldNotify: (prev, curr) => prev != curr && curr != null,
-          initialData: null,
-          lazy: false),
       ChangeNotifierProxyProvider<SharedPreferences?, LanguageChangeNotifier>(
-          lazy: true,
           create: (context) => LanguageChangeNotifier(),
           update: (context, sharedPref, notifier) {
             if (sharedPref == null) return notifier!;
@@ -35,30 +36,6 @@ void main() {
                   Provider.of<SharedPreferences?>(context, listen: false));
           }),
     ],
-    child: const MyApp(),
+    child: const MainAppWidget(),
   ));
-}
-
-class MyApp extends StatelessWidget {
-  const MyApp({Key? key}) : super(key: key);
-
-  // This widget is the root of your application.
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-        title: 'To Do List',
-        theme: ThemeData(
-          primarySwatch: Colors.blue,
-        ),
-        home: const HomeScreen(),
-        onGenerateRoute: RouteManagement.generateRoute,
-        localizationsDelegates: const [
-          GlobalMaterialLocalizations.delegate,
-          GlobalCupertinoLocalizations.delegate,
-          GlobalWidgetsLocalizations.delegate,
-          Translations.delegate
-        ],
-        supportedLocales: Translations.delegate.supportedLocales,
-        locale: Provider.of<LanguageChangeNotifier>(context).currentLang);
-  }
 }
