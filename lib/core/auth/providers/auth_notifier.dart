@@ -97,11 +97,12 @@ class AuthNotifier extends ChangeNotifier {
     try {
       final redirectUrl =
           await authorizationCallback(_authService!.getAuthorizationUrl(grant));
-      debugPrint('redirect URL: ${redirectUrl.toString()}');
+      debugPrint('redirect URL from signIn notifier: ${redirectUrl.toString()}');
 
       final authResult = await _authService?.handleAuthorizationResponse(
           grant, redirectUrl.queryParameters);
       _state.isAuthenticated = authResult == true;
+      debugPrint(_state.isAuthenticated.toString());
       notifyListeners();
     } catch (e) {
       _state.errorMessage = e.toString();

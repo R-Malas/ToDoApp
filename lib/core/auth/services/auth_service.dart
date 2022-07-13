@@ -1,3 +1,4 @@
+import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:oauth2/oauth2.dart';
 import 'package:http/http.dart' as http;
@@ -82,6 +83,7 @@ class AuthService {
       AuthorizationCodeGrant grant, Map<String, String> queryParams) async {
     try {
       final httpClient = await grant.handleAuthorizationResponse(queryParams);
+      debugPrint('creds written in storage');
       await _storage.write(httpClient.credentials);
       return true;
     } on FormatException {
