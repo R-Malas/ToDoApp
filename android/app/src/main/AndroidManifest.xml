@@ -31,9 +31,12 @@
 
                 <category android:name="android.intent.category.DEFAULT" />
                 <category android:name="android.intent.category.BROWSABLE" />
-                <!-- Accepts URIs that begin with https://YOUR_HOST -->
+                <!-- Accepts URIs that begin with https://todoist.com -->
                 <data
                     android:host="todoist.com"
+                    android:scheme="https" />
+                <data
+                    android:host="localhost:3000"
                     android:scheme="https" />
             </intent-filter>
         </activity>

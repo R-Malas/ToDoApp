@@ -4,29 +4,23 @@ import 'package:to_do_list/core/db/db_main.dart';
 class DbChangeNotifier extends ChangeNotifier {
   MyDatabase? _todoDb;
 
+  List<Task> get tasksListStream => _tasksListStream;
   List<Task> _tasksListStream = [];
 
-  List<Task> get tasksListStream => _tasksListStream;
-
+  Task? get task => _task;
   Task? _task;
 
-  Task? get task => _task;
-
+  bool get newTaskId => _newTaskId;
   bool _newTaskId = false;
 
-  bool get newTaskId => _newTaskId;
-
+  bool get isTaskUpdated => _isTaskUpdated;
   bool _isTaskUpdated = false;
 
-  bool get isTaskUpdated => _isTaskUpdated;
-
+  bool get isTaskDeleted => _isTaskDeleted;
   bool _isTaskDeleted = false;
 
-  bool get isTaskDeleted => _isTaskDeleted;
-
-  String _error = '';
-
   String get error => _error;
+  String _error = '';
 
   DbChangeNotifier();
 

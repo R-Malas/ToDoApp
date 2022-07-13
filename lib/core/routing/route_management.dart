@@ -21,6 +21,13 @@ class RouteManagement {
         return MaterialPageRoute(builder: (_) => const HomeScreen());
       case AppRoutes.addTask:
         return MaterialPageRoute(builder: (_) => const AddToDoScreen());
+      case AppRoutes.error:
+        return MaterialPageRoute(
+            builder: (_) => ErrorScreen(
+                  errorMessage: settings.arguments != null
+                      ? settings.arguments as String
+                      : 'Something went wrong!',
+                ));
       default:
         return MaterialPageRoute(
             builder: (_) => const ErrorScreen(
